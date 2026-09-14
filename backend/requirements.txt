@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+scikit-learn
+python-multipart
+requests
+# optional capabilities (install to enable):
+# torch
+# tabpfn
+# shap
+# supabase
