@@ -1,0 +1,51 @@
+# render.yaml  -  Render Blueprint for the CAPEX AI RT2026 backend
+#
+# Put this file at the ROOT of your repository (not inside backend/).
+# Then on render.com: New > Blueprint > select your repo. Render reads this
+# file and creates the service with these settings, so you do not click them
+# in by hand.
+#
+# After the first deploy, set FRONTEND_ORIGIN (see note below) to your Vercel
+# URL so CORS allows the deployed front end.
+
+services:
+  - type: web
+    name: capex-ai-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      # Set this in the Render dashboard AFTER you know your Vercel URL,
+      # e.g. https://capex-ai.vercel.app  (no trailing slash).
+      # Left with sync:false so Render prompts you for it rather than
+      # baking a placeholder into the repo.
+      - key: FRONTEND_ORIGIN
+        sync: false
+
+# ---------------------------------------------------------------------------
+# OPTIONAL: make the SQLite prediction history survive restarts and redeploys.
+# The free plan does NOT support persistent disks, so this block only works on
+# a paid instance. If you upgrade, change plan above to "starter", uncomment the
+# disk block below, and point your DB path at the mount:
+#
+#     disk:
+#       name: capex-data
+#       mountPath: /var/data
+#       sizeGB: 1
+#
+# then in db.py set:  DB_PATH = Path("/var/data") / "capex.db"
+# guarded so it still falls back to a local file when that folder is absent:
+#
+#     import os
+#     base = Path("/var/data") if os.path.isdir("/var/data") else Path(__file__).parent
+#     DB_PATH = base / "capex.db"
+#
+# On the free plan, leave this out and treat the deployed app as a live demo
+# whose history resets on restart.
+# ---------------------------------------------------------------------------
