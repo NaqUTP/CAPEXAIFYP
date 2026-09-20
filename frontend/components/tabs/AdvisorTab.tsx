@@ -42,11 +42,11 @@ export default function AdvisorTab() {
             </div>
           )}
           {messages.map((m, i) => (
-            <div key={i} style={{ padding: "14px 16px", borderBottom: "1px solid var(--rule2)", background: m.role === "user" ? "#FBFAF7" : "transparent" }}>
-              <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "var(--muted)", marginBottom: 5, letterSpacing: ".04em" }}>
+            <div key={i} style={{ padding: "14px 16px", borderBottom: "1px solid var(--rule2)", background: m.role === "user" ? "var(--panel2)" : "transparent" }}>
+              <div style={{ fontFamily: "Inter, sans-serif", fontSize: 10, color: "var(--muted)", marginBottom: 5, letterSpacing: ".04em" }}>
                 {m.role === "user" ? "YOU" : "ADVISOR"}
               </div>
-              <div style={{ fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-wrap", fontFamily: m.role === "user" ? "IBM Plex Mono, monospace" : "inherit" }}>
+              <div style={{ fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-wrap", fontFamily: m.role === "user" ? "Inter, sans-serif" : "inherit" }}>
                 {m.content}
               </div>
             </div>

@@ -34,23 +34,23 @@ export default function Page() {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "216px 1fr", minHeight: "100vh" }}>
       {/* rail */}
-      <aside style={{ background: "var(--rail-bg,#1A1E22)", color: "#C7CDD2", position: "sticky", top: 0, height: "100vh", display: "flex", flexDirection: "column" }}>
-        <div style={{ padding: "18px 18px 16px", borderBottom: "1px solid #2A2F34" }}>
-          <div style={{ fontFamily: "IBM Plex Mono, monospace", fontWeight: 600, fontSize: 13, color: "#fff" }}>CAPEX&nbsp;AI</div>
-          <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10.5, color: "#7C858E", marginTop: 3 }}>RT2026 // cost model</div>
+      <aside style={{ background: "#12161C", color: "#B4BCC8", borderRight: "1px solid rgba(255,255,255,.06)", position: "sticky", top: 0, height: "100vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ padding: "18px 18px 16px", borderBottom: "1px solid rgba(255,255,255,.06)" }}>
+          <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 15, background: "linear-gradient(135deg,#00A19B,#6C4DD3)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>CAPEX AI</div>
+          <div style={{ fontFamily: "Inter, sans-serif", fontSize: 10.5, color: "#5B6472", marginTop: 3, letterSpacing: ".04em" }}>RT2026 · cost model</div>
         </div>
         <nav style={{ padding: "8px 0", flex: 1 }}>
           {groups.map((g) => (
             <div key={g}>
-              <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "#7C858E", padding: "14px 18px 6px", letterSpacing: ".08em" }}>{g}</div>
+              <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: 10, color: "#5B6472", padding: "16px 18px 6px", letterSpacing: ".12em" }}>{g}</div>
               {Object.entries(TABS).filter(([, t]) => t.group === g).map(([k, t]) => {
                 const on = k === tab;
                 return (
                   <a key={k} onClick={() => setTab(k)}
                      style={{
-                       display: "block", padding: "9px 18px", fontSize: 13.5, cursor: "pointer",
-                       color: on ? "#fff" : "#C7CDD2", background: on ? "#22272C" : "transparent",
-                       borderLeft: `2px solid ${on ? "var(--signal)" : "transparent"}`,
+                       display: "block", padding: "10px 18px", fontSize: 13.5, cursor: "pointer", fontFamily: "Inter, sans-serif",
+                       color: on ? "#fff" : "#B4BCC8", background: on ? "rgba(0,161,155,.14)" : "transparent",
+                       borderLeft: `3px solid ${on ? "#00A19B" : "transparent"}`,
                        fontWeight: on ? 500 : 400,
                      }}>
                     {t.label}
@@ -60,7 +60,7 @@ export default function Page() {
             </div>
           ))}
         </nav>
-        <div style={{ borderTop: "1px solid #2A2F34", padding: "12px 18px", fontFamily: "IBM Plex Mono, monospace", fontSize: 11 }}>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,.06)", padding: "14px 18px", fontFamily: "Inter, sans-serif", fontSize: 11 }}>
           <Stat k="backend" v={health ? "live" : "offline"} dot={health ? "live" : "off"} />
           <Stat k="pytorch / mlp" v={health?.torch ? "on" : "off"} />
           <Stat k="models trained" v={health?.models ?? 0} />
@@ -70,10 +70,10 @@ export default function Page() {
 
       {/* main */}
       <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
-        <div style={{ background: "var(--panel)", borderBottom: "1px solid var(--rule)", padding: "14px 26px", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+        <div style={{ background: "#12161C", borderBottom: "1px solid rgba(255,255,255,.06)", padding: "16px 26px", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
           <div>
-            <h1 style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-.01em" }}>{TABS[tab].label}</h1>
-            <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "var(--muted)", marginTop: 2 }}>{TABS[tab].crumb}</div>
+            <h1 style={{ fontSize: 18, fontWeight: 600, letterSpacing: "-.01em", fontFamily: "Sora, sans-serif" }}>{TABS[tab].label}</h1>
+            <div style={{ fontFamily: "Inter, sans-serif", fontSize: 11, color: "var(--muted)", marginTop: 3 }}>{TABS[tab].crumb}</div>
           </div>
         </div>
         <div style={{ padding: 26, maxWidth: 1180 }}>
@@ -86,10 +86,10 @@ export default function Page() {
 
 function Stat({ k, v, dot }: { k: string; v: any; dot?: string }) {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", padding: "3px 0", color: "#7C858E" }}>
+    <div style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", color: "#5B6472" }}>
       <span>{k}</span>
-      <b style={{ color: "#C7CDD2", fontWeight: 500 }}>
-        {dot && <span style={{ display: "inline-block", width: 7, height: 7, borderRadius: "50%", marginRight: 6, background: dot === "live" ? "#3FB27F" : "#C8442A" }} />}
+      <b style={{ color: "#B4BCC8", fontWeight: 500 }}>
+        {dot && <span style={{ display: "inline-block", width: 7, height: 7, borderRadius: "50%", marginRight: 6, background: dot === "live" ? "#3FB27F" : "#E5654B", boxShadow: dot === "live" ? "0 0 6px #3FB27F" : "none" }} />}
         {v}
       </b>
     </div>

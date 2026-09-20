@@ -52,7 +52,7 @@ export default function PreprocessTab() {
           <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
             {TYPES.map((t) => (
               <button key={t} onClick={() => setChosen(t)} className="tag"
-                style={{ cursor: "pointer", padding: "6px 12px", borderColor: chosen === t ? "var(--deep)" : "var(--rule)", color: chosen === t ? "var(--deep)" : "var(--steel)" }}>
+                style={{ cursor: "pointer", padding: "6px 12px", borderColor: chosen === t ? "#00A19B" : "var(--rule)", color: chosen === t ? "#00A19B" : "#B4BCC8" }}>
                 {t}
               </button>
             ))}
@@ -60,7 +60,7 @@ export default function PreprocessTab() {
           {detection.detection.confidence < 0.5 && (
             <p style={{ fontSize: 12, color: "var(--warn)", marginBottom: 10 }}>Low confidence. Check the columns and confirm the type manually.</p>
           )}
-          <p style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "var(--muted)", marginBottom: 12 }}>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: 11, color: "var(--muted)", marginBottom: 12 }}>
             columns: {detection.columns.join(", ")}
           </p>
           <div style={{ display: "flex", gap: 8 }}>

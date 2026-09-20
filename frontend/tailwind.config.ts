@@ -4,17 +4,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F7F6F3", panel: "#FFFFFF", ink: "#16191C", steel: "#3A4550",
-        muted: "#6B7480", rule: "#D8DAD5", rule2: "#E9E9E5",
-        signal: "#C8442A", deep: "#1E4B54", deep2: "#2C6B77",
-        ok: "#2E6B4F", warn: "#B5730F",
-        rail: { bg: "#1A1E22", ink: "#C7CDD2", muted: "#7C858E", line: "#2A2F34" },
+        bg: "#0E1116", panel: "#171B22", panel2: "#1E232C", elev: "#232A34",
+        text: "#E6E9EF", muted: "#8A93A2", dim: "#5B6472",
+        teal: "#00A19B", purple: "#6C4DD3",
+        ok: "#3FB27F", warn: "#E0A93B", sig: "#E5654B",
       },
       fontFamily: {
-        sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
-        mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+        head: ['"Sora"', "sans-serif"],
+        sans: ['"Inter"', "system-ui", "sans-serif"],
       },
-      borderRadius: { none: "0" },
     },
   },
   plugins: [],

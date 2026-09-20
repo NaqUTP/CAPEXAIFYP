@@ -22,10 +22,10 @@ export default function CompareTab() {
               <div key={p.name} style={{ marginBottom: 12 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 4 }}>
                   <span>{p.name}</span>
-                  <span style={{ fontFamily: "IBM Plex Mono, monospace" }}>{p.total} MM USD</span>
+                  <span style={{ fontFamily: "Inter, sans-serif" }}>{p.total} MM USD</span>
                 </div>
-                <div style={{ height: 14, background: "#F2F1EC" }}>
-                  <div style={{ height: "100%", width: `${(p.total / maxTotal) * 100}%`, background: "var(--deep)" }} />
+                <div style={{ height: 14, background: "rgba(255,255,255,.06)" }}>
+                  <div style={{ height: "100%", width: `${(p.total / maxTotal) * 100}%`, background: "#00A19B" }} />
                 </div>
               </div>
             ))}

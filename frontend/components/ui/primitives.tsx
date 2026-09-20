@@ -37,11 +37,11 @@ export function Field({ label, ...props }: any) {
 // A meter-style figure readout; numbers are monospace by design.
 export function Figure({ label, value, unit, signal, deep }: any) {
   return (
-    <div style={{ padding: "14px 16px", borderRight: "1px solid var(--rule2)" }}>
-      <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 10.5, color: "var(--muted)" }}>{label}</div>
+    <div style={{ padding: "14px 16px", borderRight: "1px solid var(--rule)" }}>
+      <div style={{ fontFamily: "Inter, sans-serif", fontSize: 10.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".04em" }}>{label}</div>
       <div style={{
-        fontFamily: "IBM Plex Mono, monospace", fontSize: 24, fontWeight: 600, marginTop: 6,
-        letterSpacing: "-.02em", color: signal ? "var(--signal)" : deep ? "var(--deep)" : "var(--ink)",
+        fontFamily: "Sora, sans-serif", fontSize: 24, fontWeight: 700, marginTop: 6, fontVariantNumeric: "tabular-nums",
+        letterSpacing: "-.02em", color: signal ? "#6C4DD3" : deep ? "#00A19B" : "var(--text)",
       }}>
         {value}{unit && <span style={{ fontSize: 12, color: "var(--muted)", fontWeight: 400 }}> {unit}</span>}
       </div>
@@ -51,7 +51,7 @@ export function Figure({ label, value, unit, signal, deep }: any) {
 
 export function Metrics({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${React.Children.count(children)},1fr)`, border: "1px solid var(--rule)" }}>
+    <div style={{ display: "grid", gridTemplateColumns: `repeat(${React.Children.count(children)},1fr)`, border: "1px solid var(--rule)", borderRadius: 12, overflow: "hidden" }}>
       {children}
     </div>
   );
@@ -59,12 +59,12 @@ export function Metrics({ children }: { children: React.ReactNode }) {
 
 export function Empty({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ border: "1px dashed var(--rule)", padding: 26, textAlign: "center", color: "var(--muted)", fontSize: 13 }}>
+    <div style={{ border: "1px dashed var(--rule)", borderRadius: 12, padding: 30, textAlign: "center", color: "var(--muted)", fontSize: 13 }}>
       {children}
     </div>
   );
 }
 
 export function Spinner({ label }: { label?: string }) {
-  return <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 12, color: "var(--muted)" }}>{label || "working…"}</span>;
+  return <span style={{ fontFamily: "Inter, sans-serif", fontSize: 12, color: "var(--teal)" }}>{label || "working…"}</span>;
 }

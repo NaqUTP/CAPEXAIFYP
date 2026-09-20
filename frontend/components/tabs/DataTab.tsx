@@ -55,7 +55,7 @@ export default function DataTab() {
           </label>
           {datasets.map((d) => (
             <button key={d.name} onClick={() => setActive(d.name)}
-              className="tag" style={{ cursor: "pointer", borderColor: d.name === active ? "var(--deep)" : "var(--rule)", color: d.name === active ? "var(--deep)" : "var(--steel)" }}>
+              className="tag" style={{ cursor: "pointer", borderColor: d.name === active ? "#00A19B" : "var(--rule)", color: d.name === active ? "#00A19B" : "#B4BCC8" }}>
               {d.name} · {d.rows}
             </button>
           ))}
@@ -68,7 +68,7 @@ export default function DataTab() {
           <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 14 }}>
             <span className="flabel" style={{ margin: 0 }}>test set</span>
             <input type="range" min={0.1} max={0.4} step={0.05} value={testSize} onChange={(e) => setTestSize(+e.target.value)} />
-            <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 12 }}>{Math.round(testSize * 100)}%</span>
+            <span style={{ fontFamily: "Inter, sans-serif", fontSize: 12 }}>{Math.round(testSize * 100)}%</span>
             <button className="btn" onClick={onTrain} disabled={busy === "train"} style={{ marginLeft: "auto" }}>
               {busy === "train" ? "Training…" : "Train models"}
             </button>
@@ -81,14 +81,14 @@ export default function DataTab() {
               <div style={{ display: "flex", alignItems: "flex-end", gap: 26, height: 190, padding: "10px 6px 0", borderBottom: "1px solid var(--rule)" }}>
                 {scored.map(([name, r]: any) => (
                   <div key={name} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", height: "100%" }}>
-                    <div style={{ width: "100%", maxWidth: 96, height: `${(r.r2 / maxR2) * 100}%`, background: name === model.best_model ? "var(--signal)" : "var(--deep)" }} />
-                    <div style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11, marginTop: 8, color: "var(--steel)", textAlign: "center" }}>
-                      <b style={{ display: "block", color: "var(--ink)", fontSize: 12 }}>{r.r2}</b>{name}
+                    <div style={{ width: "100%", maxWidth: 96, height: `${(r.r2 / maxR2) * 100}%`, background: name === model.best_model ? "#6C4DD3" : "#00A19B" }} />
+                    <div style={{ fontFamily: "Inter, sans-serif", fontSize: 11, marginTop: 8, color: "#B4BCC8", textAlign: "center" }}>
+                      <b style={{ display: "block", color: "var(--text)", fontSize: 12 }}>{r.r2}</b>{name}
                     </div>
                   </div>
                 ))}
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "var(--muted)", padding: "6px 6px 0" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "Inter, sans-serif", fontSize: 10, color: "var(--muted)", padding: "6px 6px 0" }}>
                 <span>R² on held-out test set</span><span>best: {model.best_model}</span>
               </div>
             </>
@@ -127,18 +127,18 @@ export default function DataTab() {
             const inc = c.value > 0;
             return (
               <div key={c.feature} style={{ display: "grid", gridTemplateColumns: "130px 1fr 62px", alignItems: "center", gap: 10, padding: "5px 0" }}>
-                <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11.5, color: "var(--steel)", textAlign: "right" }}>{c.feature}</span>
-                <div style={{ position: "relative", height: 16, background: "#F2F1EC" }}>
-                  <div style={{ position: "absolute", left: "50%", top: -2, bottom: -2, width: 1, background: "var(--steel)" }} />
-                  <div style={{ position: "absolute", top: 0, height: "100%", background: inc ? "var(--signal)" : "var(--deep2)", left: inc ? "50%" : `${50 - mag}%`, width: `${mag}%` }} />
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: 11.5, color: "#B4BCC8", textAlign: "right" }}>{c.feature}</span>
+                <div style={{ position: "relative", height: 16, background: "rgba(255,255,255,.06)" }}>
+                  <div style={{ position: "absolute", left: "50%", top: -2, bottom: -2, width: 1, background: "#B4BCC8" }} />
+                  <div style={{ position: "absolute", top: 0, height: "100%", background: inc ? "#6C4DD3" : "#00A19B", left: inc ? "50%" : `${50 - mag}%`, width: `${mag}%` }} />
                 </div>
-                <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 11.5, textAlign: "right" }}>{c.value > 0 ? "+" : ""}{c.value}</span>
+                <span style={{ fontFamily: "Inter, sans-serif", fontSize: 11.5, textAlign: "right" }}>{c.value > 0 ? "+" : ""}{c.value}</span>
               </div>
             );
           })}
-          <div style={{ display: "flex", gap: 16, marginTop: 12, fontFamily: "IBM Plex Mono, monospace", fontSize: 11, color: "var(--muted)" }}>
-            <span><i style={{ display: "inline-block", width: 10, height: 10, background: "var(--signal)", marginRight: 5 }} />raises CAPEX</span>
-            <span><i style={{ display: "inline-block", width: 10, height: 10, background: "var(--deep2)", marginRight: 5 }} />lowers CAPEX</span>
+          <div style={{ display: "flex", gap: 16, marginTop: 12, fontFamily: "Inter, sans-serif", fontSize: 11, color: "var(--muted)" }}>
+            <span><i style={{ display: "inline-block", width: 10, height: 10, background: "#6C4DD3", marginRight: 5 }} />raises CAPEX</span>
+            <span><i style={{ display: "inline-block", width: 10, height: 10, background: "#00A19B", marginRight: 5 }} />lowers CAPEX</span>
           </div>
         </Panel>
       )}

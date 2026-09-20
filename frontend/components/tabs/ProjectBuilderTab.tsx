@@ -47,7 +47,7 @@ export default function ProjectBuilderTab() {
           <button className="btn" onClick={create}>Create project</button>
           {projects.map((p) => (
             <button key={p.name} onClick={() => setActive(p.name)} className="tag"
-              style={{ cursor: "pointer", padding: "6px 12px", borderColor: p.name === active ? "var(--deep)" : "var(--rule)" }}>
+              style={{ cursor: "pointer", padding: "6px 12px", borderColor: p.name === active ? "#00A19B" : "var(--rule)" }}>
               {p.name}
             </button>
           ))}
@@ -94,9 +94,9 @@ export default function ProjectBuilderTab() {
                   ))}
                 </tbody>
               </table>
-              <div style={{ borderTop: "2px solid var(--ink)", marginTop: 8, display: "flex", justifyContent: "space-between", padding: "11px 14px", background: "#FBFAF7" }}>
-                <span style={{ fontSize: 13, color: "var(--steel)" }}>Project CAPEX</span>
-                <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 22, fontWeight: 600 }}>{proj.total} MM USD</span>
+              <div style={{ borderTop: "1px solid rgba(0,161,155,.4)", marginTop: 8, display: "flex", justifyContent: "space-between", padding: "11px 14px", background: "var(--panel2)" }}>
+                <span style={{ fontSize: 13, color: "#B4BCC8" }}>Project CAPEX</span>
+                <span style={{ fontFamily: "Sora, sans-serif", fontSize: 22, fontWeight: 700, color: "#00A19B" }}>{proj.total} MM USD</span>
               </div>
             </>
           )}

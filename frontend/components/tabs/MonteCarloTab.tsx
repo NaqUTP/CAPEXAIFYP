@@ -62,7 +62,7 @@ export default function MonteCarloTab() {
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <span className="flabel" style={{ margin: 0 }}>uncertainty</span>
           <input type="range" min={0.05} max={0.3} step={0.05} value={uncertainty} onChange={(e) => setUncertainty(+e.target.value)} />
-          <span style={{ fontFamily: "IBM Plex Mono, monospace", fontSize: 12 }}>{Math.round(uncertainty * 100)}%</span>
+          <span style={{ fontFamily: "Inter, sans-serif", fontSize: 12 }}>{Math.round(uncertainty * 100)}%</span>
           <button className="btn" onClick={run} disabled={busy || !cols.length} style={{ marginLeft: "auto" }}>{busy ? "Running…" : "Run Monte Carlo"}</button>
         </div>
         {!cols.length && <p style={{ marginTop: 10, fontSize: 12, color: "var(--muted)" }}>Train a model for this dataset first (Data & Models tab).</p>}
@@ -79,10 +79,10 @@ export default function MonteCarloTab() {
           <Panel title="Total cost distribution" note={`${res.n} simulations`}>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 2, height: 150, borderBottom: "1px solid var(--rule)", paddingTop: 8 }}>
               {res.hist.map((h: number, i: number) => (
-                <div key={i} style={{ flex: 1, height: `${(h / maxH) * 100}%`, background: "var(--deep2)", opacity: 0.85 }} />
+                <div key={i} style={{ flex: 1, height: `${(h / maxH) * 100}%`, background: "#00A19B", opacity: 0.85 }} />
               ))}
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "IBM Plex Mono, monospace", fontSize: 10, color: "var(--muted)", paddingTop: 6 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "Inter, sans-serif", fontSize: 10, color: "var(--muted)", paddingTop: 6 }}>
               <span>{res.min} MM</span><span>{res.p50} MM (P50)</span><span>{res.max} MM</span>
             </div>
           </Panel>
